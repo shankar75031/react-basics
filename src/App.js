@@ -14,7 +14,17 @@ export default class App extends Component {
         name: "Prabhashankar",
         age: 22,
       },
+      {
+        name: "Pootham",
+        age: 22,
+      },
     ],
+    showPersons: false,
+  };
+
+  togglePersonsHandler = () => {
+    const doesShow = this.state.showPersons;
+    this.setState({ showPersons: !doesShow });
   };
 
   nameChangeHandler = (event) => {
@@ -26,6 +36,10 @@ export default class App extends Component {
         },
         {
           name: "Prabhashankar",
+          age: 22,
+        },
+        {
+          name: "Pootham",
           age: 22,
         },
       ],
@@ -43,6 +57,10 @@ export default class App extends Component {
           name: newName,
           age: 22,
         },
+        {
+          name: "Pootham",
+          age: 22,
+        },
       ],
     });
   };
@@ -51,30 +69,34 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I am React App</h1>
-        <button
-          onClick={() => {
-            this.switchNameHandler("Snowman");
-          }}
-        >
-          Switch name
-        </button>
-        <h1>Hi i am react app</h1>
-        <Person
-          onNameChange={this.nameChangeHandler}
-          click={() => this.switchNameHandler("Sangeetha")}
-          name={this.state.persons[0].name}
-          age={this.state.persons[0].age}
-        >
-          Maalaagha
-        </Person>
-        <Person
-          onNameChange={this.nameChangeHandler}
-          click={this.switchNameHandler.bind(this, "Kunjoonj")}
-          name={this.state.persons[1].name}
-          age={this.state.persons[1].age}
-        >
-          My Hobbies: Singing
-        </Person>
+        <button onClick={this.togglePersonsHandler}>Switch name</button>
+        {this.state.showPersons ? (
+          <div>
+            <Person
+              onNameChange={this.nameChangeHandler}
+              click={this.switchNameHandler.bind(this, "Snowman")}
+              name={this.state.persons[0].name}
+              age={this.state.persons[0].age}
+            >
+              My Hobbies: Dancing
+            </Person>
+            <Person
+              click={this.switchNameHandler.bind(this, "Kunjoonj")}
+              name={this.state.persons[1].name}
+              age={this.state.persons[1].age}
+            >
+              My Hobbies: Singing
+            </Person>
+
+            <Person
+              click={this.switchNameHandler.bind(this, "Kunjoonj")}
+              name={this.state.persons[2].name}
+              age={this.state.persons[2].age}
+            >
+              My Hobbies: Sitting idle
+            </Person>
+          </div>
+        ) : null}
       </div>
     );
   }
