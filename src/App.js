@@ -8,9 +8,10 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hi i am react app</h1>
-        <Person />
-        <Person />
-        <Person />
+        <Person name="Elsa" age="22" />
+        <Person name="Anna" age="21">
+          My Hobbies: Singing
+        </Person>
       </div>
     );
   }
