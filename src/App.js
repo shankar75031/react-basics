@@ -9,6 +9,8 @@ export default class App extends Component {
       <div className="App">
         <h1>Hi i am react app</h1>
         <Person />
+        <Person />
+        <Person />
       </div>
     );
   }
