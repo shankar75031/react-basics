@@ -1,12 +1,15 @@
-import logo from "./logo.svg";
 import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <h1>Hi i am react app</h1>
-    </div>
-  );
-}
+import React, { Component } from "react";
+import Person from "./Person/Person";
 
-export default App;
+export default class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi i am react app</h1>
+        <Person />
+      </div>
+    );
+  }
+}
