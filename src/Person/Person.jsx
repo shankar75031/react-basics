@@ -4,7 +4,7 @@ export default function Person(props) {
   return (
     <div>
       I am {props.name} and I am {props.age}
-      <p>{props.children}</p>
+      <p onClick={props.click}>{props.children}</p>
     </div>
   );
 }

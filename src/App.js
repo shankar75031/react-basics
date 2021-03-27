@@ -1,27 +1,27 @@
 import "./App.css";
 
-import React, { useState } from "react";
+import React, { Component } from "react";
 import Person from "./Person/Person";
 
-export default function App(props) {
-  const [personsState, setPersonsState] = useState({
+export default class App extends Component {
+  state = {
     persons: [
       {
         name: "Anna",
         age: 21,
       },
       {
-        name: "Elsa",
+        name: "Prabhashankar",
         age: 22,
       },
     ],
-  });
+  };
 
-  const switchNameHandler = () => {
-    setPersonsState({
+  switchNameHandler = (newName) => {
+    this.setState({
       persons: [
         {
-          name: "Sangeetha",
+          name: newName,
           age: 21,
         },
         {
@@ -32,21 +32,33 @@ export default function App(props) {
     });
   };
 
-  return (
-    <div className="App">
-      <h1>Hi, I am React App</h1>
-      <button onClick={switchNameHandler}>Switch name</button>
-      <h1>Hi i am react app</h1>
-      <Person
-        name={personsState.persons[0].name}
-        age={personsState.persons[0].age}
-      />
-      <Person
-        name={personsState.persons[1].name}
-        age={personsState.persons[1].age}
-      >
-        My Hobbies: Singing
-      </Person>
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <h1>Hi, I am React App</h1>
+        <button
+          onClick={() => {
+            this.switchNameHandler("Snowman");
+          }}
+        >
+          Switch name
+        </button>
+        <h1>Hi i am react app</h1>
+        <Person
+          click={() => this.switchNameHandler("Sangeetha")}
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age}
+        >
+          Maalaagha
+        </Person>
+        <Person
+          click={this.switchNameHandler.bind(this, "Kunjoonj")}
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+        >
+          My Hobbies: Singing
+        </Person>
+      </div>
+    );
+  }
 }
