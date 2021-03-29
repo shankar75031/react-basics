@@ -66,6 +66,14 @@ export default class App extends Component {
   };
 
   render() {
+    const style = {
+      backgroundColor: "white",
+      font: "inherit",
+      border: "1px solid blue",
+      padding: "8px",
+      cursor: "pointer",
+    };
+
     let persons = null;
     if (this.state.showPersons) {
       persons = (
@@ -90,7 +98,9 @@ export default class App extends Component {
     return (
       <div className="App">
         <h1>Hi, I am React App</h1>
-        <button onClick={this.togglePersonsHandler}>Switch name</button>
+        <button style={style} onClick={this.togglePersonsHandler}>
+          Switch name
+        </button>
         {persons}
       </div>
     );
