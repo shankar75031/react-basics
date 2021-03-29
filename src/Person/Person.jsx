@@ -1,10 +1,6 @@
 import React from "react";
 
 export default function Person(props) {
-  const rando = Math.random();
-  if (rando > 0.9) {
-    throw new Error("Something is not right");
-  }
   return (
     <div>
       <h1 onClick={props.click}>

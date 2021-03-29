@@ -67,7 +67,8 @@ export default class App extends Component {
 
   render() {
     const style = {
-      backgroundColor: "white",
+      backgroundColor: "green",
+      color: "white",
       font: "inherit",
       border: "1px solid blue",
       padding: "8px",
@@ -80,26 +81,36 @@ export default class App extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <ErrorBoundary key={person.id}>
-                <Person
-                  name={person.name}
-                  age={person.age}
-                  click={() => this.deletePersonHandler(index)}
-                  onNameChange={(event) =>
-                    this.nameChangeHandler(event, person.id)
-                  }
-                />
-              </ErrorBoundary>
+              // <ErrorBoundary >
+              <Person
+                key={person.id}
+                name={person.name}
+                age={person.age}
+                click={() => this.deletePersonHandler(index)}
+                onNameChange={(event) =>
+                  this.nameChangeHandler(event, person.id)
+                }
+              />
+              // </ErrorBoundary>
             );
           })}
         </div>
       );
+      style.backgroundColor = "red";
+    }
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red");
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold");
     }
     return (
       <div className="App">
         <h1>Hi, I am React App</h1>
+        <p className={classes.join(" ")}>This is really working</p>
         <button style={style} onClick={this.togglePersonsHandler}>
-          Switch name
+          Toggle Persons
         </button>
         {persons}
       </div>
