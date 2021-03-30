@@ -1,10 +1,7 @@
-import "./App.css";
-
 import React, { Component } from "react";
 import Person from "./Person/Person";
-import Radium from "radium";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
-
+import style from "./App.module.css";
+// import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends Component {
   state = {
     persons: [
@@ -67,14 +64,19 @@ class App extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      color: "white",
-      font: "inherit",
-      border: "1px solid blue",
-      padding: "8px",
-      cursor: "pointer",
-    };
+    let btnClass = "";
+    // const style = {
+    //   backgroundColor: "green",
+    //   color: "white",
+    //   font: "inherit",
+    //   border: "1px solid blue",
+    //   padding: "8px",
+    //   cursor: "pointer",
+    //   ":hover": {
+    //     backgroundColor: "lightgreen",
+    //     color: "black",
+    //   },
+    // };
 
     let persons = null;
     if (this.state.showPersons) {
@@ -97,20 +99,25 @@ class App extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "red";
+      btnClass = style.Red;
+      // style.backgroundColor = "red";
+      // style[":hover"] = {
+      //   backgroundColor: "salmon",
+      //   color: "black",
+      // };
     }
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red");
+      assignedClasses.push(style.red);
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold");
+      assignedClasses.push(style.bold);
     }
     return (
-      <div className="App">
+      <div className={style.App}>
         <h1>Hi, I am React App</h1>
-        <p className={classes.join(" ")}>This is really working</p>
-        <button style={style} onClick={this.togglePersonsHandler}>
+        <p className={assignedClasses.join(" ")}>This is really working</p>
+        <button className={btnClass} onClick={this.togglePersonsHandler}>
           Toggle Persons
         </button>
         {persons}
@@ -119,4 +126,4 @@ class App extends Component {
   }
 }
 
-export default Radium(App);
+export default App;
