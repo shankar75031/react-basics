@@ -1,19 +1,6 @@
 import React from "react";
-// import "./Person.css";
+import styles from "./Person.module.css";
 import styled from "styled-components";
-
-const StyledDiv = styled.div`
-  width: 60%;
-  margin: 16px auto;
-  border: 1px solid #eee;
-  box-shadow: 0 2px 3px #ccc;
-  padding: 16px;
-  text-align: center;
-
-  @media (min-width: 500px) {
-    width: 450px;
-  }
-`;
 
 function Person(props) {
   const style = {
@@ -24,7 +11,7 @@ function Person(props) {
 
   return (
     // <div className="Person" style={style}>
-    <StyledDiv>
+    <div className={styles.Person}>
       <h1 onClick={props.click}>
         I am {props.name} and I am {props.age}
       </h1>
@@ -35,7 +22,7 @@ function Person(props) {
         onChange={props.onNameChange}
         value={props.name}
       />
-    </StyledDiv>
+    </div>
   );
 }
 
