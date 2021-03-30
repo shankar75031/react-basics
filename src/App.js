@@ -2,9 +2,10 @@ import "./App.css";
 
 import React, { Component } from "react";
 import Person from "./Person/Person";
+import Radium from "radium";
 import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     persons: [
       {
@@ -117,3 +118,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default Radium(App);
