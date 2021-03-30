@@ -4,22 +4,6 @@ import styled from "styled-components";
 import React, { Component } from "react";
 import Person from "./Person/Person";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
-
-const StyledButton = styled.button`
-  background-color: ${(props) => (props.alt === true ? "red" : "green")};
-  color: white;
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8px;
-  cursor: pointer;
-
-  &:hover {
-    background-color: ${(props) =>
-      props.alt === true ? "salmon" : "lightgreen"};
-    color: black;
-  }
-`;
-
 class App extends Component {
   state = {
     persons: [
@@ -133,12 +117,13 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I am React App</h1>
         <p className={classes.join(" ")}>This is really working</p>
-        <StyledButton
+        <button
+          className="button"
           alt={this.state.showPersons}
           onClick={this.togglePersonsHandler}
         >
           Toggle Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
     );
