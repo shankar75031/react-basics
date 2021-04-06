@@ -1,21 +1,22 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import Person from "./Person/Person";
 
-class Persons extends Component {
+class Persons extends PureComponent {
   //   static getDerivedStateFromProps(props, state) {
   //     console.log("[Persons.js] getDerivedStateFromProps");
   //     return state;
   //   }
 
-  shouldComponentUpdate(nextProps, nextState) {
-    // Decides whether the component should update or not
-    console.log("[Persons.js] shouldComponentUpdate");
-    if (nextProps.persons !== this.props.persons) {
-      return true;
-    } else {
-      return false;
-    }
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   // Decides whether the component should update or not
+  //   console.log("[Persons.js] shouldComponentUpdate");
+  //   // If we check for every props in order to rerender we can use PureComponent instead of Component
+  //   if (nextProps.persons !== this.props.persons) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     // Called after render. Don't manipulate DOM here. Useful for getting scroll position of user etc.
