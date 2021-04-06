@@ -37,6 +37,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // Called after render & getSnapshotBeforeUpdate
     console.log('[App.js] componentDidMount')
   }
 
@@ -44,6 +45,17 @@ class App extends Component {
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
+
+  componentDidUpdate() {
+    console.log('[App.js] componentDidUpdate')
+  }
+
+  shouldComponetnUpdate(nextProps, nextState){
+    console.log('[App.js] shouldComponetnUpdate')
+    return true
+    
+  }
+
 
   nameChangeHandler = (event, id) => {
     const personIndex = this.state.persons.findIndex((p) => p.id === id);
