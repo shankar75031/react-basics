@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Person from "./Person/Person";
-import style from "./App.module.css";
+import classes from "./App.module.css";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends Component {
   state = {
@@ -65,18 +65,6 @@ class App extends Component {
 
   render() {
     let btnClass = "";
-    // const style = {
-    //   backgroundColor: "green",
-    //   color: "white",
-    //   font: "inherit",
-    //   border: "1px solid blue",
-    //   padding: "8px",
-    //   cursor: "pointer",
-    //   ":hover": {
-    //     backgroundColor: "lightgreen",
-    //     color: "black",
-    //   },
-    // };
 
     let persons = null;
     if (this.state.showPersons) {
@@ -99,22 +87,17 @@ class App extends Component {
           })}
         </div>
       );
-      btnClass = style.Red;
-      // style.backgroundColor = "red";
-      // style[":hover"] = {
-      //   backgroundColor: "salmon",
-      //   color: "black",
-      // };
+      btnClass = classes.Red;
     }
     const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      assignedClasses.push(style.red);
+      assignedClasses.push(classes.red);
     }
     if (this.state.persons.length <= 1) {
-      assignedClasses.push(style.bold);
+      assignedClasses.push(classes.bold);
     }
     return (
-      <div className={style.App}>
+      <div className={classes.App}>
         <h1>Hi, I am React App</h1>
         <p className={assignedClasses.join(" ")}>This is really working</p>
         <button className={btnClass} onClick={this.togglePersonsHandler}>

@@ -1,17 +1,9 @@
 import React from "react";
-import styles from "./Person.module.css";
-import styled from "styled-components";
+import classes from "./Person.module.css";
 
 function Person(props) {
-  const style = {
-    "@media (min-width: 500px)": {
-      width: "450px",
-    },
-  };
-
   return (
-    // <div className="Person" style={style}>
-    <div className={styles.Person}>
+    <div className={classes.Person}>
       <h1 onClick={props.click}>
         I am {props.name} and I am {props.age}
       </h1>
