@@ -2,11 +2,24 @@ import React, { useEffect } from "react";
 import classes from "./Cockpit.module.css";
 
 export default function Cockpit(props) {
+  // Pass empty array as 2nd arg to use it as componentDidMount
+  // Pass array of variables to execute it as componentDidMount and also when those variables changes
+  // Return a callback for first arg function to handle componentDidUnmount
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
     setTimeout(() => {
       alert("SAVED TO CLOUD");
     }, 1000);
+    return () => {
+      console.log("[Cockpit.js] cleanup");
+    };
+  }, [props.persons]);
+
+  useEffect(() => {
+    console.log("[Cockpit.js] 2nd useEffect");
+    return () => {
+      console.log("[Cockpit.js] cleanup in 2nd useEffect");
+    };
   }, [props.persons]);
 
   let btnClass = "";
