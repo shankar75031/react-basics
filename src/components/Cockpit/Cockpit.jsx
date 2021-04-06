@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import classes from "./Cockpit.module.css";
 
-export default function Cockpit(props) {
+const Cockpit = (props) => {
   // Pass empty array as 2nd arg to use it as componentDidMount
   // Pass array of variables to execute it as componentDidMount and also when those variables changes
   // Return a callback for first arg function to handle componentDidUnmount
@@ -14,7 +14,7 @@ export default function Cockpit(props) {
       clearTimeout(timer);
       console.log("[Cockpit.js] cleanup");
     };
-  }, [props.persons]);
+  }, [props.personsLength]);
 
   useEffect(() => {
     console.log("[Cockpit.js] 2nd useEffect");
@@ -30,10 +30,10 @@ export default function Cockpit(props) {
     btnClass = classes.Red;
   }
 
-  if (props.persons.length <= 2) {
+  if (props.personsLength <= 2) {
     assignedClasses.push(classes.red);
   }
-  if (props.persons.length <= 1) {
+  if (props.personsLength <= 1) {
     assignedClasses.push(classes.bold);
   }
 
@@ -46,4 +46,6 @@ export default function Cockpit(props) {
       </button>
     </div>
   );
-}
+};
+
+export default React.memo(Cockpit);
