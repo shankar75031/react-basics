@@ -3,6 +3,7 @@ import Cockpit from "../components/Cockpit/Cockpit";
 import Persons from "../components/Persons/Persons";
 import withClass from "../hoc/withClass";
 import Auxillary from "../hoc/Auxillary";
+import AuthContext from "../context/auth-context";
 import classes from "./App.module.css";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends Component {
@@ -124,16 +125,23 @@ class App extends Component {
         >
           Remove cockpit
         </button>
-        {this.state.showCockpit ? (
-          <Cockpit
-            login={this.loginHandler}
-            showPersons={this.state.showPersons}
-            personsLength={this.state.persons.length}
-            clicked={this.togglePersonsHandler}
-            title={this.props.appTitle}
-          />
-        ) : null}
-        {persons}
+        <AuthContext.Provider
+          value={{
+            authenticated: this.state.authenticated,
+            login: this.loginHandler,
+          }}
+        >
+          {this.state.showCockpit ? (
+            <Cockpit
+              login={this.loginHandler}
+              showPersons={this.state.showPersons}
+              personsLength={this.state.persons.length}
+              clicked={this.togglePersonsHandler}
+              title={this.props.appTitle}
+            />
+          ) : null}
+          {persons}
+        </AuthContext.Provider>
       </Auxillary>
     );
   }
