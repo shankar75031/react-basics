@@ -5,7 +5,7 @@ function Person(props) {
   return (
     <div className={classes.Person}>
       <h1 onClick={props.click}>
-        I am {props.name} and I am {props.age}
+        I'm {props.name} and I am {props.age}
       </h1>
       <p>{props.children}</p>
       <input

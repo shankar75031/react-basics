@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Person from "./Person/Person";
+import Person from "../components/Persons/Person/Person";
 import classes from "./App.module.css";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends Component {
