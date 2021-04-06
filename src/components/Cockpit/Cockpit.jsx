@@ -1,27 +1,26 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import classes from "./Cockpit.module.css";
 
 const Cockpit = (props) => {
+  const toggleButtonRef = useRef(null);
+
   // Pass empty array as 2nd arg to use it as componentDidMount
   // Pass array of variables to execute it as componentDidMount and also when those variables changes
   // Return a callback for first arg function to handle componentDidUnmount
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
-    const timer = setTimeout(() => {
-      alert("SAVED TO CLOUD");
-    }, 1000);
+    toggleButtonRef.current.click();
     return () => {
-      clearTimeout(timer);
       console.log("[Cockpit.js] cleanup");
     };
-  }, [props.personsLength]);
+  }, []);
 
   useEffect(() => {
     console.log("[Cockpit.js] 2nd useEffect");
     return () => {
       console.log("[Cockpit.js] cleanup in 2nd useEffect");
     };
-  }, [props.persons]);
+  }, [props.personsLength]);
 
   let btnClass = "";
   const assignedClasses = [];
@@ -41,7 +40,11 @@ const Cockpit = (props) => {
     <div className={classes.Cockpit}>
       <h1>{props.title}</h1>
       <p className={assignedClasses.join(" ")}>This is really working</p>
-      <button className={btnClass} onClick={props.clicked}>
+      <button
+        ref={toggleButtonRef}
+        className={btnClass}
+        onClick={props.clicked}
+      >
         Toggle Persons
       </button>
     </div>
