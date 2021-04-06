@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Cockpit from "../components/Cockpit/Cockpit";
 import Persons from "../components/Persons/Persons";
-import WithClass from "../hoc/WithClass";
+import withClass from "../hoc/withClass";
+import Auxillary from "../hoc/Auxillary";
 import classes from "./App.module.css";
 // import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 class App extends Component {
@@ -104,7 +105,7 @@ class App extends Component {
     }
 
     return (
-      <WithClass classes={classes.App}>
+      <Auxillary>
         <button
           onClick={() => {
             this.setState({ showCockpit: false });
@@ -121,9 +122,9 @@ class App extends Component {
           />
         ) : null}
         {persons}
-      </WithClass>
+      </Auxillary>
     );
   }
 }
 
-export default App;
+export default withClass(App, classes.App);
