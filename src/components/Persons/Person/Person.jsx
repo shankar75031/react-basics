@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Aux from "../../../hoc/Auxillary";
+import Auxillary from "../../../hoc/Auxillary";
 import classes from "./Person.module.css";
 
 class Person extends Component {
@@ -7,7 +7,7 @@ class Person extends Component {
     console.log("[Person.js] rendering");
 
     return (
-      <React.Fragment>
+      <Auxillary>
         <div className={classes.Person}>
           <h1 onClick={this.props.click}>
             I'm {this.props.name} and I am {this.props.age}
@@ -20,7 +20,7 @@ class Person extends Component {
             value={this.props.name}
           />
         </div>
-      </React.Fragment>
+      </Auxillary>
     );
   }
 }
