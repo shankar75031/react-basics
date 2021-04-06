@@ -2,6 +2,8 @@ import React from "react";
 import classes from "./Person.module.css";
 
 function Person(props) {
+  console.log("[Person.js] rendering");
+
   return (
     <div className={classes.Person}>
       <h1 onClick={props.click}>
