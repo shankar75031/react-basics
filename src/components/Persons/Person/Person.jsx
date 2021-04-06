@@ -20,6 +20,11 @@ class Person extends Component {
 
     return (
       <Auxillary>
+        {this.props.isAuthenticated ? (
+          <p>Authenticated</p>
+        ) : (
+          <p>Please login</p>
+        )}
         <h1 onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age}
         </h1>
