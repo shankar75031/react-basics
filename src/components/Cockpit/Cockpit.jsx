@@ -7,10 +7,11 @@ export default function Cockpit(props) {
   // Return a callback for first arg function to handle componentDidUnmount
   useEffect(() => {
     console.log("[Cockpit.js] useEffect");
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       alert("SAVED TO CLOUD");
     }, 1000);
     return () => {
+      clearTimeout(timer);
       console.log("[Cockpit.js] cleanup");
     };
   }, [props.persons]);
