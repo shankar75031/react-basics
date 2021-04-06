@@ -12,8 +12,11 @@ class Person extends Component {
     this.inputElement = React.createRef();
   }
 
+  static contextType = AuthContext;
+
   componentDidMount() {
     this.inputElement.current.focus();
+    console.log(this.context.authenticated);
   }
 
   render() {
@@ -21,11 +24,11 @@ class Person extends Component {
 
     return (
       <Auxillary>
-        <AuthContext.Consumer>
-          {(context) =>
-            context.authenticated ? <p>Authenticated</p> : <p>Please login</p>
-          }
-        </AuthContext.Consumer>
+        {this.context.authenticated ? (
+          <p>Authenticated</p>
+        ) : (
+          <p>Please login</p>
+        )}
 
         <h1 onClick={this.props.click}>
           I'm {this.props.name} and I am {this.props.age}
